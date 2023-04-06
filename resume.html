@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png"
+    href="https://static.production.thenounproject.com/img/favicons/favicon-16x16.0b6183ac3673.png" sizes="16x16">
+
+  <link rel="stylesheet" href="style.css">
+  <title>Resume Builder </title>
+</head>
+
+<body>
+  <div class="container" id="cv-form">
+    <h1 class="text-center my-2"> Online Resume Builder </h1>
+    <p class="text-center"><b>~ By Anand Satyam D.K. </b></p>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Personal Information </h3>
+
+        <div class="form-group">
+          <label for="nameField">Your Name : </label>
+          <input type="text" id="nameField" placeholder="Enter here" class="form-control" />
+        </div>
+        <div class="form-group mt-2 ">
+
+          <label for="contactfield"> Contact </label> <i class="fas fa-phone-square-alt		"></i> :
+
+          <input type="number" id="contactField" placeholder="Enter phone number" class="form-control" />
+
+        </div>
+        <div class="form-group">
+          <label for="addressField">Address </label> <i class="fas fa-home"></i> :
+          <textarea type="text" id="addressField" placeholder="Enter here" class="form-control"></textarea>
+        </div>
+        <!-- <div class="form-group mt-3">
+          <label for=""> Upload your Profile Photo</label>
+          <span class="input-group-text">
+            <img src="profile_logo.jpg" alt="Logo" width="20" height="20">
+          </span>
+          <input id="imgfield" type="file" class="form-control" />
+        </div>
+      -->
+        <div class="form-group">
+          <label for="profiefield">Upload your Profile Photo</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <img src="profile_logo.jpg" alt="Logo" width="18" height="18">
+            </span>
+            <input id="imgfield" type="file" class="form-control" accept=".jpg" onchange="validateFile(this)" />
+          </div>
+        </div>
+
+        <p class="text-secondary my-3"> Social Profiles : </p>
+        <div class="form-group">
+          <label for="gitfield">Github Link : </label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <a href="https://github.com/" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+            </span>
+            <input type="text" id="gitfield" placeholder="Enter here" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group mt-2 ">
+          <label for="quorafield">Quora Link : </label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <a href="https://www.quora.com/" target="_blank">
+                <i class="fab fa-quora"></i>
+              </a>
+            </span>
+            <input type="text" id="quorafield" placeholder="Enter here" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Linkedinfield">LinkedIn Link : </label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <a href="https://www.linkedin.com/" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </span>
+            <input type="text" id="LinkedinField" placeholder="Enter here" class="form-control" />
+          </div>
+        </div>
+
+        <!--  <div class="form-group">
+          <label for="fbfield">Github Link : </label>
+          <input type="text" id="gitfield" placeholder="Enter here" class="form-control" />
+        </div>
+        <div class="form-group mt-2 ">
+          <label for="quorafield">Quora Link : </label>
+          <input type="text" id="quorafield" placeholder="Enter here" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="Linkedinfield">Linkedin Link : </label>
+          <input type="text" id="LinkedinField" placeholder="Enter here" class="form-control" />
+        </div> -->
+      </div>
+
+
+
+      <div class="col-md-6">
+        <h3>Professional Information</h3>
+        <div class="form-group">
+          <label for="">Summary : </label>
+          <textarea type="text" id="objectiveField" placeholder="Enter here" class="form-control" rows="2"></textarea>
+        </div>
+        <div class="form-group mt-2" id="we">
+          <label for="">Work Experience : </label>
+          <textarea type="text" placeholder="Enter here" class="form-control wefield" rows="3"></textarea>
+
+
+
+        </div>
+        <div class="container text-center mt-2 " id="weAddButton">
+          <button onclick="addnewWeField()" class="btn btn-primary btn-sm">Add</button>
+        </div>
+        <div class="form-group mt-2" id="aq">
+          <label for="">Academic Qualification : </label>
+          <textarea type="text" placeholder="Enter here" class="form-control eqfield"></textarea>
+        </div>
+        <div class="container text-center mt-3" id="aqAddButton">
+          <button onclick="addnewAQField()" class="btn btn-primary btn-sm">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center mt-3">
+      <button onclick="generateCV()" class="btn btn-primary btn-lg"> Generate & View CV </button>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <!--CV Template Code-->
+  <div class="container" id="cv-template">
+
+    <div class="row">
+      <div class="col-md-4 text-center py-4 background">
+        <!--This is first coloumn-->
+        <img src="https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1.jpg" alt=""
+          class="img-fluid myimg" id="imgTemp" />
+        <div class="container">
+          <p><i class="fas fa-user-alt	"> :</i> <a id="nameT1">Satyam Anand D.K. </a> </p>
+          <p> <i class="fas fa-phone-alt	"> :</i> +91-<a id="contactT"> 7415594783 </a> </p>
+          <p> <i class="fas fa-home"> :</i> <a id="addressT"> Sec-3 , Bhilai, Durg, India </a> </p>
+          <hr />
+          <p> <i class="fab fa-github	"> : </i> <a id="gtT" href="#1">https://github.com/</a></p>
+          <p> <i class="fab fa-quora"> :</i><a id="quoraT" href="#2"> https://www.quora.com/</a></p>
+          <p> <i class="fab fa-linkedin"> :</i> <a id="linkT" href="#3">https://www.linkedin.com/</a></p>
+
+        </div>
+
+      </div>
+      <div class="col-md-8 py-5"> <!--this is second coloumn-->
+        <h1 id="nameT2" class="text-center" style="font-weight: 970 "> Satyam Anand D.K.</h1>
+
+        <!--Objective Card-->
+        <div class="card">
+          <div class="card-header">
+            <h3>Professional Summary</h3>
+            <div class="card-body"></div>
+            <p id="objectiveT">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae facilis necessitatibus
+              excepturi
+              temporibus ducimus similique suscipit esse. Nobis excepturi tenetur, voluptas error labore laboriosam
+              cupiditate aspernatur enim perferendis fuga repellendus dignissimos saepe quis earum quos maxime
+              voluptatibus deleniti possimus asperiores. A quasi voluptates aspernatur officia ad fugiat hic, similique
+              placeat.</p>
+          </div>
+        </div>
+
+        <!--Work Experience -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Work Experience</h3>
+            <div class="card-body"></div>
+            <ul id="weT">
+              <li>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem perferendis, quos sapiente nihil
+                consequuntur distinctio natus assumenda quam a dolores, fugiat, sed quaerat. Perspiciatis soluta est,
+                maiores dolore alias eius!
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem perferendis, quos sapiente nihil
+                consequuntur distinctio natus assumenda quam a dolores, fugiat, sed quaerat. Perspiciatis soluta est,
+                maiores dolore alias eius!
+              </li>
+
+
+            </ul>
+          </div>
+
+          <!--Academic Qualification-->
+          <!--Work Experience -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Academic Qualification</h3>
+              <div class="card-body"></div>
+              <ul id="aqT">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem perferendis, quos sapiente nihil
+                  consequuntur distinctio natus assumenda quam a dolores, fugiat, sed quaerat. Perspiciatis soluta est,
+                  maiores dolore alias eius!
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem perferendis, quos sapiente nihil
+                  consequuntur distinctio natus assumenda quam a dolores, fugiat, sed quaerat. Perspiciatis soluta est,
+                  maiores dolore alias eius!
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+          <div class="container mt-3 text-center">
+            <button onclick="printCV()" class="btn background">Print CV </button>
+          </div>
+
+        </div>
+
+
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+      <script src="script.js"> </script>
+</body>
+
+</html>
